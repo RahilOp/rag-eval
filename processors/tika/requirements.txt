@@ -1,0 +1,5 @@
+Flask==3.0.3
+langchain==0.3.6
+llmsherpa==0.1.4
+pandas==1.2.4
+Spire.Pdf==10.8.1

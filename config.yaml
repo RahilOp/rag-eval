@@ -1,0 +1,80 @@
+# General Configuration
+only_create_index: false  # Set to true if you want to only create the index and skip retrieval tests
+only_test_index: true # Set to true if you want to only test the index and skip index creation
+
+ground_truth_path: "./data/ground_truth/qa_dataset.csv"
+
+log_dir: "./logs"         # Directory for storing logs
+
+##############################################
+# Retrieval Testing Configurations
+##############################################
+
+search_methods:           # List of search methods to test
+  # - bm25
+  - hybrid
+  # - knn
+  # - hybrid_cc
+
+retriever_weights:        # Weight configurations for hybrid search methods
+  # - [0.5, 0.5]
+  - [0.7, 0.3]
+  # - [0.3, 0.7]
+  # - [0.8, 0.2]
+
+reranked_options:         # Whether to test with reranked results or not
+  - true
+  # - false
+
+test_retrieval: false
+test_generation: true
+
+test_indices:
+  # Add your index names here
+  # - my_index_name
+  - sample_index
+
+##############################################
+# Chunker Testing Configurations
+##############################################
+
+data_path: "./data/documents"
+
+file_processor:
+  # - tika
+  - marker
+  # - docling
+  # - unstructured
+
+processing_mode:
+  # - csv
+  # - json
+  - markdown
+  # - html
+  # - txt
+  # - embedding
+  # - vectors
+  # - clean
+
+use_vlm: true
+
+vlm_name: "Qwen/Qwen2-VL-7B-Instruct"
+
+chunk_method:
+  - mdChunking
+  - mdFixedSizeChunking
+  # - charChunking
+  # - recursiveChunking
+  # - tokenChunking
+  # - semanticChunking
+  # - fixedChunking
+  # - pageChunking
+
+chunk_size:
+  - 300
+  # - 500
+  # - 750
+  # - 1000
+  # - 2000
+
+embedder_name: "BAAI/bge-m3"
